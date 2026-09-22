@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lame Client - Official Wiki & Guide</title>
   <style>
+    :root {
+      --accent-color: #b356d9;
+      --accent-light: #d17bff;
+      --accent-glow: rgba(179, 86, 217, 0.4);
+      --accent-bg: rgba(179, 86, 217, 0.15);
+      --accent-bg-hover: rgba(179, 86, 217, 0.3);
+      --accent-gradient: linear-gradient(90deg, rgba(179, 86, 217, 0.5) 0%, rgba(179, 86, 217, 0.1) 100%);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -35,11 +44,12 @@
       max-width: 100%;
       height: 600px;
       display: flex;
-      border: 3px solid #b356d9;
-      box-shadow: 0 0 20px rgba(179, 86, 217, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.8);
+      border: 3px solid var(--accent-color);
+      box-shadow: 0 0 20px var(--accent-glow), inset 0 0 15px rgba(0, 0, 0, 0.8);
       position: relative;
       background: rgba(18, 18, 20, 0.85);
       backdrop-filter: blur(4px);
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     /* Top Utility Bar */
@@ -63,37 +73,40 @@
     }
 
     .top-bar .btn:hover {
-      color: #d17bff;
+      color: var(--accent-light);
     }
 
     .top-bar .logo-title {
       font-size: 20px;
       font-weight: bold;
-      color: #b356d9;
+      color: var(--accent-color);
       display: flex;
       align-items: center;
       gap: 2px;
       margin-left: 10px;
+      transition: color 0.3s;
     }
 
     .top-bar .logo-title span {
-      background: #b356d9;
+      background: var(--accent-color);
       color: #000;
       padding: 0 4px;
       font-size: 16px;
       border-radius: 2px;
+      transition: background 0.3s;
     }
 
     /* Left Sidebar Tabs */
     .sidebar {
       width: 200px;
       flex-shrink: 0;
-      border-right: 2px solid #b356d9;
+      border-right: 2px solid var(--accent-color);
       display: flex;
       flex-direction: column;
       background: rgba(10, 10, 12, 0.7);
       padding-top: 15px;
       overflow-y: auto;
+      transition: border-color 0.3s;
     }
 
     .tab-btn {
@@ -111,12 +124,12 @@
 
     .tab-btn:hover {
       color: #fff;
-      background: rgba(179, 86, 217, 0.15);
+      background: var(--accent-bg);
     }
 
     .tab-btn.active {
       color: #fff;
-      background: linear-gradient(90deg, rgba(179, 86, 217, 0.5) 0%, rgba(179, 86, 217, 0.1) 100%);
+      background: var(--accent-gradient);
     }
 
     .tab-btn.active::before {
@@ -126,8 +139,8 @@
       top: 0;
       bottom: 0;
       width: 4px;
-      background: #d17bff;
-      box-shadow: 0 0 8px #d17bff;
+      background: var(--accent-light);
+      box-shadow: 0 0 8px var(--accent-light);
     }
 
     /* Main Content Area */
@@ -145,10 +158,11 @@
       align-items: center;
       gap: 15px;
       margin-bottom: 20px;
-      border-bottom: 2px solid #b356d9;
+      border-bottom: 2px solid var(--accent-color);
       padding-bottom: 5px;
       width: max-content;
       min-width: 150px;
+      transition: border-color 0.3s;
     }
 
     .tab-header h2 {
@@ -178,8 +192,8 @@
     }
 
     .page-btn:hover {
-      background: #b356d9;
-      border-color: #d17bff;
+      background: var(--accent-color);
+      border-color: var(--accent-light);
     }
 
     /* Grid Layout for Modules */
@@ -209,11 +223,11 @@
     }
 
     .module-card:hover {
-      background: rgba(179, 86, 217, 0.3);
-      border-color: #b356d9;
+      background: var(--accent-bg-hover);
+      border-color: var(--accent-color);
       color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(179, 86, 217, 0.3);
+      box-shadow: 0 4px 10px var(--accent-glow);
     }
 
     /* Settings View Styling */
@@ -239,9 +253,9 @@
 
     .sub-tab-btn.active {
       color: #fff;
-      background: rgba(179, 86, 217, 0.6);
+      background: var(--accent-bg-hover);
       padding: 2px 12px;
-      border-bottom: 3px solid #d17bff;
+      border-bottom: 3px solid var(--accent-light);
       border-radius: 2px;
     }
 
@@ -262,6 +276,16 @@
       text-shadow: 1px 1px 2px #000;
     }
 
+    .setting-label-clickable {
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .setting-label-clickable:hover {
+      color: var(--accent-light);
+      text-decoration: underline;
+    }
+
     .toggle-switch {
       width: 45px;
       height: 22px;
@@ -273,8 +297,8 @@
     }
 
     .toggle-switch.on {
-      background: #b356d9;
-      border-color: #d17bff;
+      background: var(--accent-color);
+      border-color: var(--accent-light);
     }
 
     .toggle-switch::after {
@@ -328,7 +352,7 @@
     .config-section-title {
       font-size: 18px;
       font-weight: bold;
-      color: #b356d9;
+      color: var(--accent-color);
       margin-bottom: 12px;
       text-shadow: 1px 1px 2px #000;
     }
@@ -339,7 +363,7 @@
       padding: 10px;
       margin-bottom: 15px;
       background: rgba(45, 45, 50, 0.8);
-      border: 1px solid #b356d9;
+      border: 1px solid var(--accent-color);
       color: #fff;
       font-size: 15px;
       font-weight: bold;
@@ -350,8 +374,8 @@
     }
 
     .config-btn:hover {
-      background: rgba(179, 86, 217, 0.4);
-      box-shadow: 0 0 10px rgba(179, 86, 217, 0.4);
+      background: var(--accent-bg-hover);
+      box-shadow: 0 0 10px var(--accent-glow);
     }
 
     .config-list {
@@ -371,13 +395,13 @@
     }
 
     .config-item:hover {
-      background: rgba(179, 86, 217, 0.2);
+      background: var(--accent-bg);
     }
 
     .config-item.active {
-      background: rgba(179, 86, 217, 0.5);
+      background: var(--accent-bg-hover);
       color: #fff;
-      border-color: #d17bff;
+      border-color: var(--accent-light);
     }
 
     /* About Content Layout */
@@ -399,7 +423,7 @@
       max-width: 45%;
       height: 200px;
       background: rgba(20, 20, 25, 0.8);
-      border: 1px solid rgba(179, 86, 217, 0.4);
+      border: 1px solid var(--accent-color);
       border-radius: 4px;
       display: flex;
       align-items: center;
@@ -417,9 +441,9 @@
     .about-image-fallback {
       font-size: 32px;
       font-weight: bold;
-      color: #d17bff;
+      color: var(--accent-light);
       text-align: center;
-      text-shadow: 0 0 10px rgba(179, 86, 217, 0.8);
+      text-shadow: 0 0 10px var(--accent-glow);
     }
 
     .about-credits-box {
@@ -429,7 +453,7 @@
     .credits-title {
       font-size: 20px;
       font-weight: bold;
-      color: #d17bff;
+      color: var(--accent-light);
       margin-bottom: 15px;
       text-shadow: 1px 1px 2px #000;
     }
@@ -445,6 +469,19 @@
       font-weight: bold;
       color: #eee;
       letter-spacing: 0.5px;
+      cursor: pointer;
+      padding: 6px 12px;
+      background: rgba(45, 45, 50, 0.5);
+      border-radius: 4px;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .credit-name:hover {
+      background: var(--accent-bg-hover);
+      border-color: var(--accent-color);
+      color: #fff;
+      transform: translateX(4px);
     }
 
     .about-bottom-info {
@@ -501,8 +538,8 @@
       width: 480px;
       max-width: 100%;
       background: #1e1e24;
-      border: 2px solid #b356d9;
-      box-shadow: 0 0 25px rgba(179, 86, 217, 0.5);
+      border: 2px solid var(--accent-color);
+      box-shadow: 0 0 25px var(--accent-glow);
       padding: 25px;
       position: relative;
       border-radius: 4px;
@@ -512,9 +549,9 @@
     .modal-title {
       font-size: 24px;
       font-weight: bold;
-      color: #d17bff;
+      color: var(--accent-light);
       margin-bottom: 5px;
-      border-bottom: 1px solid rgba(179, 86, 217, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       padding-bottom: 5px;
     }
 
@@ -530,10 +567,11 @@
       line-height: 1.6;
       color: #ddd;
       margin-bottom: 20px;
+      white-space: pre-wrap;
     }
 
     .modal-close {
-      background: #b356d9;
+      background: var(--accent-color);
       color: #fff;
       border: none;
       padding: 8px 20px;
@@ -546,7 +584,7 @@
     }
 
     .modal-close:hover {
-      background: #d17bff;
+      background: var(--accent-light);
     }
 
     /* Empty tab message */
@@ -578,7 +616,7 @@
         background: rgba(0, 0, 0, 0.5);
         justify-content: space-between;
         width: 100%;
-        border-bottom: 1px solid #b356d9;
+        border-bottom: 1px solid var(--accent-color);
         font-size: 13px;
         gap: 10px;
         flex-wrap: wrap;
@@ -589,7 +627,7 @@
         height: auto;
         flex-direction: row;
         border-right: none;
-        border-bottom: 2px solid #b356d9;
+        border-bottom: 2px solid var(--accent-color);
         padding-top: 0;
         overflow-x: auto;
         white-space: nowrap;
@@ -682,12 +720,12 @@
       </div>
     </div>
 
-    <!-- Modal Dialog for Module Description -->
+    <!-- Modal Dialog for Module Description & Developers -->
     <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
       <div class="modal-box" onclick="event.stopPropagation()">
-        <div class="modal-title" id="modal-title">Module Name</div>
+        <div class="modal-title" id="modal-title">Title</div>
         <div class="modal-category" id="modal-category">CATEGORY</div>
-        <div class="modal-desc" id="modal-desc">Module description text goes here.</div>
+        <div class="modal-desc" id="modal-desc">Description text goes here.</div>
         <button class="modal-close" onclick="closeModal()">CLOSE</button>
       </div>
     </div>
@@ -827,7 +865,7 @@
       "FastLadders": "",
       "FastBridge": "高速で橋を作れます。",
 
-      // --- Render (Page 1 & 2) ---
+      // --- Render ---
       "AntiTexture": "テクスチャのロードを無効化します。",
       "ArmorHud": "防具の状態を左側に表示します。",
       "BetterFont": "ゲーム内の文字が綺麗になります。",
@@ -984,6 +1022,53 @@
       "EggWars": "16色のエッグウォーズの村人スポナーを材料タブに適応されます。"
     };
 
+    // Settings Toggle Item Descriptions
+    const settingDescriptions = {
+      "Show Experimental Features": "",
+      "Hide Menu Icon": "メニューアイコンの表示",
+      "Show IP Address": "位置情報(IP)の表示",
+      "Enable Rich Presence": "Presenceの表示設定",
+      "Show Recipe ID Overlay": "クラフトレシピのID表示",
+      "Show notifications on top-left": "通知位置設定",
+      "Rainbow Mode": "UIのアクセントカラーを虹色にゆっくり変化させます。",
+      "Sakura Fall": "画面背景に桜の花びらが舞い落ちるエフェクトを追加します。",
+      "Snow Fall": "画面背景に雪が降るエフェクトを追加します。",
+      "Rainy Day": "画面背景に雨が降るエフェクトを追加します。",
+      "Shooting Stars": "画面背景に流れ星が流れるエフェクトを追加します。",
+      "AntiCustomSkin": "カスタムスキンの修正",
+      "AntiCrashArrow": "タグが重なった矢でクラッシュする問題の修正",
+      "AntiCrashFish": "テクスチャが存在しない魚のアイテムデータを読み込んだ時のクラッシュする問題の修正",
+      "AntiCrashDispenser": "ワールドの高さ上限にシュルカーボックスを強制的に置くとクラッシュする問題の修正",
+      "AntiCrashTP": "不正な座標への強制テレポートクラッシュを無効化します。",
+      "AntiCrashDoor": "ピストンドアを使ったクラッシュする問題の修正",
+      "NetworkProtect": "ネットワーク切断を無効化します。",
+      "AntiCrashSteal": "チェストスティールでクラッシュする際の問題を修正します。",
+      "FixSplashPotion": "スプラッシュポーションを投げた際、2個以上使う問題を修正します。",
+      "AntiCrashPacket": "クラフトアイテムによるパケット送信を無効化します。",
+      "AntiCrashSkull": "存在しないガイコツの頭のダメージ値がずれた際の問題を修正します。",
+      "AntiCrashInventory": "インベントリー内にある存在しないアイテムがある場合、無効化します。"
+    };
+
+    // Developers Store
+    const developerData = {
+      "KITUNE": {
+        role: "Main Developer / Owner",
+        desc: "Lame Clientのメイン開発者。主にモジュールの開発と修正"
+      },
+      "nayu": {
+        role: "Support Developer",
+        desc: "Clientのベース、ModMenuの開発担当、NBTtagやアイテム関連、ソースコードの修正"
+      },
+      "JUUN893": {
+        role: "Sub Developer",
+        desc: "FPSBoost、Webライセンスシステム、クラック防止機能などの機能強化、モジュールの開発"
+      },
+      "AzeY": {
+        role: "Support Sub Developer",
+        desc: "ソースコードの提供"
+      }
+    };
+
     let currentTab = 'Combat';
     let currentRenderPage = 1;
     let currentSettingsSubTab = 'General';
@@ -991,7 +1076,6 @@
     function switchTab(tabName) {
       currentTab = tabName;
       
-      // Update sidebar styling
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.toggle('active', btn.innerText === tabName);
       });
@@ -1003,7 +1087,6 @@
       const headerContainer = document.getElementById('tab-header-container');
       const mainView = document.getElementById('main-view');
 
-      // Clear
       headerContainer.innerHTML = '';
       mainView.innerHTML = '';
 
@@ -1018,7 +1101,6 @@
         return;
       }
 
-      // Render Normal Module Tabs
       let modules = [];
       let headerHTML = `<div class="tab-header"><h2>${currentTab}</h2>`;
 
@@ -1076,72 +1158,39 @@
       if (currentSettingsSubTab === 'General') {
         mainView.innerHTML = `
           <div class="settings-list">
-            <div class="setting-item">
-              <span>Show Experimental Features</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>Hide Menu Icon</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>Show IP Address</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>Enable Rich Presence</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>Show Recipe ID Overlay</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>Show notifications on top-left</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
+            ${createSettingItem("Show Experimental Features")}
+            ${createSettingItem("Hide Menu Icon")}
+            ${createSettingItem("Show IP Address")}
+            ${createSettingItem("Enable Rich Presence")}
+            ${createSettingItem("Show Recipe ID Overlay")}
+            ${createSettingItem("Show notifications on top-left")}
             <div class="setting-item">
               <span>Menu Toggle Key</span>
-              <span style="color:#d17bff; font-weight:bold; font-size:18px;">L+R</span>
+              <span style="color:var(--accent-light); font-weight:bold; font-size:18px;">L+R</span>
             </div>
           </div>
         `;
       } else if (currentSettingsSubTab === 'Theme') {
         mainView.innerHTML = `
           <div class="settings-list">
-            <div class="setting-item">
-              <span>Rainbow Mode</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>Sakura Fall</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>Snow Fall</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>Rainy Day</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>Shooting Stars</span>
-              <div class="toggle-switch" onclick="this.classList.toggle('on')"></div>
-            </div>
+            ${createSettingItem("Rainbow Mode")}
+            ${createSettingItem("Sakura Fall")}
+            ${createSettingItem("Snow Fall")}
+            ${createSettingItem("Rainy Day")}
+            ${createSettingItem("Shooting Stars")}
             <div class="setting-item" style="margin-top: 10px;">
               <span>Accent Color:</span>
               <div class="color-palette">
-                <div class="color-box" style="background: #00e5ff;"></div>
-                <div class="color-box" style="background: #ff0000;"></div>
-                <div class="color-box" style="background: #ffcc00;"></div>
-                <div class="color-box" style="background: #ccff00;"></div>
-                <div class="color-box" style="background: #00ff00;"></div>
-                <div class="color-box" style="background: #0022ff;"></div>
-                <div class="color-box" style="background: #a822ff;"></div>
-                <div class="color-box" style="background: #ffb3d9;"></div>
-                <div class="color-box" style="background: #d17bff;"></div>
-                <div class="color-box" style="background: #ffffff;"></div>
+                <div class="color-box" style="background: #00e5ff;" onclick="setAccentColor('#00e5ff')"></div>
+                <div class="color-box" style="background: #ff0000;" onclick="setAccentColor('#ff0000')"></div>
+                <div class="color-box" style="background: #ffcc00;" onclick="setAccentColor('#ffcc00')"></div>
+                <div class="color-box" style="background: #ccff00;" onclick="setAccentColor('#ccff00')"></div>
+                <div class="color-box" style="background: #00ff00;" onclick="setAccentColor('#00ff00')"></div>
+                <div class="color-box" style="background: #0022ff;" onclick="setAccentColor('#0022ff')"></div>
+                <div class="color-box" style="background: #a822ff;" onclick="setAccentColor('#a822ff')"></div>
+                <div class="color-box" style="background: #ffb3d9;" onclick="setAccentColor('#ffb3d9')"></div>
+                <div class="color-box" style="background: #d17bff;" onclick="setAccentColor('#b356d9')"></div>
+                <div class="color-box" style="background: #ffffff;" onclick="setAccentColor('#ffffff')"></div>
               </div>
             </div>
           </div>
@@ -1149,54 +1198,18 @@
       } else if (currentSettingsSubTab === 'Patch') {
         mainView.innerHTML = `
           <div class="settings-list">
-            <div class="setting-item">
-              <span>AntiCustomSkin</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>AntiCrashArrow</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>AntiCrashFish</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>AntiCrashDispenser</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>AntiCrashTP</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>AntiCrashDoor</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>NetworkProtect</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>AntiCrashSteal</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>FixSplashPotion</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>AntiCrashPacket</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>AntiCrashSkull</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
-            <div class="setting-item">
-              <span>AntiCrashInventory</span>
-              <div class="toggle-switch on" onclick="this.classList.toggle('on')"></div>
-            </div>
+            ${createSettingItem("AntiCustomSkin", true)}
+            ${createSettingItem("AntiCrashArrow", true)}
+            ${createSettingItem("AntiCrashFish", true)}
+            ${createSettingItem("AntiCrashDispenser", true)}
+            ${createSettingItem("AntiCrashTP", true)}
+            ${createSettingItem("AntiCrashDoor", true)}
+            ${createSettingItem("NetworkProtect", true)}
+            ${createSettingItem("AntiCrashSteal", true)}
+            ${createSettingItem("FixSplashPotion", true)}
+            ${createSettingItem("AntiCrashPacket", true)}
+            ${createSettingItem("AntiCrashSkull", true)}
+            ${createSettingItem("AntiCrashInventory", true)}
           </div>
         `;
       } else if (currentSettingsSubTab === 'Config') {
@@ -1222,25 +1235,22 @@
         mainView.innerHTML = `
           <div class="about-layout">
             <div class="about-top-container">
-              <!-- 横向きの画像 (同じディレクトリの about_image.png を自動で読み込みます) -->
               <div class="about-image-box">
                 <img src="about_image.png" alt="LameClient Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <div class="about-image-fallback" style="display:none;">LameClient</div>
               </div>
 
-              <!-- 右側の Credits 情報 -->
               <div class="about-credits-box">
                 <div class="credits-title">Credits</div>
                 <div class="credits-list">
-                  <div class="credit-name">KITUNE</div>
-                  <div class="credit-name">nayu</div>
-                  <div class="credit-name">JUUN893</div>
-                  <div class="credit-name">AzeY</div>
+                  <div class="credit-name" onclick="openDevModal('KITUNE')">KITUNE</div>
+                  <div class="credit-name" onclick="openDevModal('nayu')">nayu</div>
+                  <div class="credit-name" onclick="openDevModal('JUUN893')">JUUN893</div>
+                  <div class="credit-name" onclick="openDevModal('AzeY')">AzeY</div>
                 </div>
               </div>
             </div>
 
-            <!-- 下部の Version / Build 情報 -->
             <div class="about-bottom-info">
               <div class="info-group">
                 <div class="info-label">Version</div>
@@ -1258,6 +1268,41 @@
       }
     }
 
+    // Helper for Settings Row Creation
+    function createSettingItem(name, isOn = false) {
+      return `
+        <div class="setting-item">
+          <span class="setting-label-clickable" onclick="openSettingModal('${name}')">${name}</span>
+          <div class="toggle-switch ${isOn ? 'on' : ''}" onclick="this.classList.toggle('on')"></div>
+        </div>
+      `;
+    }
+
+    // Color Theme Switcher
+    function setAccentColor(hexColor) {
+      const root = document.documentElement;
+      let lightColor = hexColor;
+      
+      // Calculate a slightly lighter version for glow/hover
+      if (hexColor === '#b356d9') lightColor = '#d17bff';
+      else if (hexColor === '#00e5ff') lightColor = '#80f3ff';
+      else if (hexColor === '#ff0000') lightColor = '#ff6666';
+      else if (hexColor === '#ffcc00') lightColor = '#ffea80';
+      else if (hexColor === '#ccff00') lightColor = '#e6ff80';
+      else if (hexColor === '#00ff00') lightColor = '#80ff80';
+      else if (hexColor === '#0022ff') lightColor = '#667aff';
+      else if (hexColor === '#a822ff') lightColor = '#c973ff';
+      else if (hexColor === '#ffb3d9') lightColor = '#ffffff';
+      else if (hexColor === '#ffffff') lightColor = '#e6e6e6';
+
+      root.style.setProperty('--accent-color', hexColor);
+      root.style.setProperty('--accent-light', lightColor);
+      root.style.setProperty('--accent-glow', `${hexColor}66`);
+      root.style.setProperty('--accent-bg', `${hexColor}26`);
+      root.style.setProperty('--accent-bg-hover', `${hexColor}4D`);
+      root.style.setProperty('--accent-gradient', `linear-gradient(90deg, ${hexColor}80 0%, ${hexColor}1A 100%)`);
+    }
+
     // Modal Operations
     function openModal(name, category) {
       document.getElementById('modal-title').innerText = name;
@@ -1268,6 +1313,23 @@
         : `${name} の説明文は未設定です。`;
       
       document.getElementById('modal-desc').innerText = desc;
+      document.getElementById('modal-overlay').classList.add('active');
+    }
+
+    function openSettingModal(name) {
+      document.getElementById('modal-title').innerText = name;
+      document.getElementById('modal-category').innerText = `SETTINGS / OPTION`;
+      
+      const desc = settingDescriptions[name] || `${name} の詳細説明です。`;
+      document.getElementById('modal-desc').innerText = desc;
+      document.getElementById('modal-overlay').classList.add('active');
+    }
+
+    function openDevModal(devName) {
+      const dev = developerData[devName] || { role: "Developer", desc: "詳細情報は設定されていません。" };
+      document.getElementById('modal-title').innerText = devName;
+      document.getElementById('modal-category').innerText = `DEVELOPER / ${dev.role.toUpperCase()}`;
+      document.getElementById('modal-desc').innerText = dev.desc;
       document.getElementById('modal-overlay').classList.add('active');
     }
 
